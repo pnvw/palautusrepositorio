@@ -1,23 +1,12 @@
-from player_reader import PlayerReader
-from player_stats import PlayerStats
 from rich.console import Console
 from rich.table import Table
 
-def main():
-    nationality = input("Nationality: ")
-    season = input("Season: ")
+from player_reader import PlayerReader
+from player_stats import PlayerStats
 
-    url = f"https://studies.cs.helsinki.fi/nhlstats/2024-25/players"
-
-    reader = PlayerReader(url)
-    stats = PlayerStats(reader)
-
-    players = stats.top_scorers_by_nationality(nationality)
-
-    console = Console()
-
+def create_table(players, nationality, season):
     table = Table(title=f"Players from {nationality} ({season})")
-    
+
     table.add_column("Name")
     table.add_column("Team")
     table.add_column("Goals", justify="right")
@@ -32,6 +21,22 @@ def main():
             str(player.assists),
             str(player.goals + player.assists)
         )
+
+    return table
+
+def main():
+    nationality = input("Nationality: ")
+    season = input("Season: ")
+
+    url = "https://studies.cs.helsinki.fi/nhlstats/2024-25/players"
+
+    reader = PlayerReader(url)
+    stats = PlayerStats(reader)
+
+    players = stats.top_scorers_by_nationality(nationality)
+
+    console = Console()
+    table = create_table(players, nationality, season)
 
     console.print(table)
 
