@@ -21,4 +21,4 @@ jobs:
     - name: Analysing the code with pylint
       working-directory: viikko2/nhl-reader
       run: |
-        pylint --rcfile=.pylintrc $(git ls-files '*.py' | grep '^viikko2/nhl-reader')
+        pylint --rcfile=.pylintrc $(git ls-files '*.py' | grep '^viikko2/nhl-reader/')
