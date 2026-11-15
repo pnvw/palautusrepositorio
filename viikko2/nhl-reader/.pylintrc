@@ -15,6 +15,7 @@ disable=raw-checker-failed,
         missing-module-docstring,
         missing-function-docstring,
         missing-class-docstring
+        too-few-public-methods
 
 [FORMAT]
 
@@ -30,4 +31,3 @@ max-nested-blocks=2
 max-args=4
 max-statements=10
 max-returns=2
-disable=too-few-public-methods
