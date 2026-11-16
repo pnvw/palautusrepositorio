@@ -16,3 +16,17 @@ class PlayerStats:
         )
 
         return nationality_players
+
+    def top_scorers_by_team(self, team):
+        team_players = []
+
+        for player in self.players:
+            if player.team == team:
+                team_players.append(player)
+
+        team_players.sort(
+            key=lambda player: player.goals + player.assists,
+            reverse=True
+        )
+
+        return team_players
